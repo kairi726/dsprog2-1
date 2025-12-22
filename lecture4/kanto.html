@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather News - KANTO</title>
+    <style>
+        /* 全体の土台（東北ページと共通） */
+        body {
+            background-color: #a2c2d0; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', sans-serif; 
+            color: #4A5B68;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; 
+        }
+        
+        /* 左右を分けるメイン枠 */
+        .main-container {
+            display: flex;
+            width: 90%;
+            max-width: 1100px;
+            gap: 20px; 
+            align-items: center; 
+        }
+
+        /* 左側：タイトルとボタン */
+        .left-section {
+            flex: 1;
+        }
+
+        .main-title {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 30px 0;
+            letter-spacing: 2px; 
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+        }
+
+        .region-btn {
+            background-color: white;
+            color: #4A5B68;
+            text-decoration: none;
+            height: 75px;
+            border-radius: 15px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            transition: 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .region-btn:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1); 
+            background-color: #f8f8f8;
+        }
+
+        /* 右側：地図エリア */
+        .right-section {
+            flex: 1; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 関東の地図画像 */
+        .kanto-img {
+            width: 90%; /* Figmaのデザインに合わせて調整してください */
+            height: auto;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.05));
+        }
+        
+        /* スマホ対応 */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column; 
+                padding: 40px 20px;
+            }
+            .main-title { font-size: 50px; text-align: center; }
+            .left-section { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="left-section">
+            <h1 class="main-title">KANTO</h1>
+            
+            <div class="button-grid">
+                <a href="ibaraki.html" class="region-btn">茨城県</a>
+                <a href="tochigi.html" class="region-btn">栃木県</a>
+                <a href="gunma.html" class="region-btn">群馬県</a>
+                <a href="saitama.html" class="region-btn">埼玉県</a>
+                <a href="chiba.html" class="region-btn">千葉県</a>
+                <a href="tokyo.html" class="region-btn">東京都</a>
+                <a href="kanagawa.html" class="region-btn">神奈川県</a>
+                <div class="region-btn" style="visibility: hidden; pointer-events: none;"></div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <img src="kanto.png" alt="関東地方" class="kanto-img">
+        </div>
+    </div>
+
+</body>
+</html>
