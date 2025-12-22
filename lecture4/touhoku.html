@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Tohoku Regions</title>
+    <style>
+        body {
+            background-color: #a2c2d0; /* デザインと同じ背景色 */
+            margin: 0;
+            padding: 50px;
+            font-family: 'Arial Black', sans-serif;
+            color: #4A5B68;
+        }
+
+        
+        .region-header {
+            font-size: 80px;
+            margin-bottom: 50px;
+            text-transform: uppercase; 
+            opacity: 0.8;
+        }
+
+       
+        .prefecture-list {
+            list-style: none; 
+            padding: 0;
+        }
+
+        
+        .prefecture-item {
+            margin: 15px 0;
+        }
+
+        
+        .prefecture-link {
+            text-decoration: none; 
+            color: #4A5B68;
+            font-size: 32px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        
+        .prefecture-link:hover {
+            color: white;
+            transform: translateX(10px); 
+        }
+
+        
+        .back-link {
+            margin-top: 50px;
+            display: block;
+            color: #4A5B68;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="region-header">TOHOKU</h1>
+
+    <ul class="prefecture-list">
+        <li class="prefecture-item"><a href="#" class="prefecture-link">・青森県</a></li>
+        <li class="prefecture-item"><a href="#" class="prefecture-link">・秋田県</a></li>
+        <li class="prefecture-item"><a href="#" class="prefecture-link">・岩手県</a></li>
+        <li class="prefecture-item"><a href="#" class="prefecture-link">・福島県</a></li>
+        <li class="prefecture-item"><a href="#" class="prefecture-link">・山形県</a></li>
+        <li class="prefecture-item"><a href="#" class="prefecture-link">・宮城県</a></li>
+    </ul>
+
+    <a href="weatherapp.html" class="back-link">← 地図に戻る</a>
+
+</body>
+</html>
