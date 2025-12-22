@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        /* 1. 全体の設定 */
+        body {
+            background-color: #a2c2d0; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', sans-serif;
+            color: #4A5B68;
+        }
+
+       
+        .main-title {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 20px 0 10px 40px; 
+        }
+
+        .map-container {
+            text-align: center; 
+            margin-top: -20px;    
+            
+        }
+
+        .japan-map {
+            width: 70%;       
+            max-width: 600px;
+            height: auto;
+        }
+
+
+        .region-label {
+            position: absolute;    
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.4); 
+            padding: 2px 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;      
+        }
+
+        .region-label:hover {
+            background-color: white;
+            transform: scale(1.1); 
+        }
+
+        .hokkaido { top: 20%; left: 74%; }
+        .tohoku { top: 47%; right: 30%; }
+        .kanto  { top: 70%; right: 35%; }
+        .chubu  { top: 45%; left: 45%; }
+        .kinki { bottom: 40%; left: 40%; }
+        .chugoku{ bottom: 35%; left: 32%; }
+        .shikoku{ bottom: 5%; left: 40%; }
+        .kyushu { bottom: 20%; left: 23%; }
+        .okinawa{ bottom: 5%; left: 60%; }
+
+
+    </style>
+</head>
+<body>
+
+    <h1 class="main-title">Weather<br>News</h1>
+
+    <div class="map-container">
+    <img src="map.png" alt="日本地図" class="japan-map">
+    <div class="region-label hokkaido">北海道</div >
+    <div class="region-label tohoku">東北</div>
+    <div class="region-label kanto">関東</div>
+    <div class="region-label chubu">中部</div>
+    <div class="region-label kinki">近畿</div>
+    <div class="region-label chugoku">中国</div>
+    <div class="region-label shikoku">四国</div>
+    <div class="region-label kyushu">九州</div> 
+    <div class="region-label okinawa">沖縄</div>
+    </div>
+
+</body>
