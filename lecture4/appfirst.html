@@ -3,82 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather News - Home</title>
     <style>
-        /* 1. 全体の設定 */
+        /* 1. 全体の土台 */
         body {
-            background-color: #a2c2d0; 
+            background-color: #a2c2d0;
             margin: 0;
             padding: 0;
-            font-family: 'Arial Black', sans-serif;
+            font-family: 'Arial Black', 'Inter', sans-serif;
             color: #4A5B68;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-       
+        /* 2. 左右に分けるコンテナ */
+        .main-container {
+            display: flex;
+            width: 90%;
+            max-width: 1100px;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        /* 3. 左側：タイトルとボタン */
+        .left-section {
+            flex: 1;
+        }
+
         .main-title {
-            font-size: 64px;
+            font-size: 70px;
             font-weight: 900;
             line-height: 0.9;
-            margin: 20px 0 10px 40px; 
+            margin: 0 0 40px 0;
+            letter-spacing: -2px;
         }
 
-        .map-container {
-            text-align: center; 
-            margin-top: -20px;    
-            
+        /* ボタンを2列に並べる（グリッド） */
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* 白いボタンのデザイン */
+        .region-btn {
+            background-color: white;
+            color: #4A5B68;
+            text-decoration: none;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px; /* 文字数が多いので少し小さめに調整 */
+            font-weight: bold;
+            transition: 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .region-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+            background-color: #f8f8f8;
+        }
+
+        /* 4. 右側：地図 */
+        .right-section {
+            flex: 1.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .japan-map {
-            width: 70%;       
-            max-width: 600px;
+            width: 100%;
+            max-width: 550px;
             height: auto;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.05));
         }
 
-
-        .region-label {
-            position: absolute;    
-            font-size: 18px;
-            font-weight: bold;
-            background-color: rgba(255, 255, 255, 0.4); 
-            padding: 2px 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.2s;      
+        /* スマホ対応 */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .main-title { font-size: 50px; }
         }
-
-        .region-label:hover {
-            background-color: white;
-            transform: scale(1.1); 
-        }
-
-        .hokkaido { top: 20%; left: 74%; }
-        .tohoku { top: 47%; right: 30%; }
-        .kanto  { top: 70%; right: 35%; }
-        .chubu  { top: 45%; left: 45%; }
-        .kinki { bottom: 40%; left: 40%; }
-        .chugoku{ bottom: 35%; left: 32%; }
-        .shikoku{ bottom: 5%; left: 40%; }
-        .kyushu { bottom: 20%; left: 23%; }
-        .okinawa{ bottom: 5%; left: 60%; }
-
-
     </style>
 </head>
 <body>
 
-    <h1 class="main-title">Weather<br>News</h1>
+    <div class="main-container">
+        <div class="left-section">
+            <h1 class="main-title">Weather<br>News</h1>
+            
+            <div class="button-grid">
+                <a href="tohoku.html" class="region-btn">北海道・東北</a>
+                <a href="kanto.html" class="region-btn">関東</a>
+                <a href="chubu.html" class="region-btn">中部</a>
+                <a href="kinki.html" class="region-btn">近畿</a>
+                <a href="chugoku-shikoku.html" class="region-btn">中国・四国</a>
+                <a href="kyushu-okinawa.html" class="region-btn">九州・沖縄</a>
+            </div>
+        </div>
 
-    <div class="map-container">
-    <img src="map.png" alt="日本地図" class="japan-map">
-    <div class="region-label hokkaido">北海道</div >
-    <div class="region-label tohoku">東北</div>
-    <div class="region-label kanto">関東</div>
-    <div class="region-label chubu">中部</div>
-    <div class="region-label kinki">近畿</div>
-    <div class="region-label chugoku">中国</div>
-    <div class="region-label shikoku">四国</div>
-    <div class="region-label kyushu">九州</div> 
-    <div class="region-label okinawa">沖縄</div>
+        <div class="right-section">
+            <img src="map.png" alt="日本地図" class="japan-map">
+        </div>
     </div>
 
 </body>
+</html>
