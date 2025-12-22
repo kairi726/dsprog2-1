@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather News - SAITAMA</title>
+    <style>
+        body {
+            background-color: #a2c2d0;
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            color: #4A5B68;
+            overflow: hidden;
+        }
+        .header { padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .main-title { font-size: 80px; margin: 0; opacity: 0.6; }
+        .back-btn {
+            background: white; padding: 10px 20px; border-radius: 10px;
+            text-decoration: none; color: #4A5B68; font-weight: bold;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+        #weather-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 50px 50px 50px;
+            gap: 30px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        #weather-container::-webkit-scrollbar { display: none; }
+        .weather-card {
+            flex: 0 0 300px;
+            background-color: white;
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            scroll-snap-align: start;
+            box-shadow: 0 10px 0 rgba(0,0,0,0.05);
+        }
+        .weather-card img { width: 140px; height: 140px; object-fit: contain; margin: 15px 0; }
+        .date { font-size: 28px; font-weight: bold; }
+        .weather-text { font-size: 18px; height: 50px; display: flex; align-items: center; justify-content: center; }
+        .details { margin-top: 15px; font-size: 22px; font-weight: bold; }
+        .temp-max { color: #FF6B6B; }
+        .temp-min { color: #4DABF7; }
+        .precip { font-size: 18px; margin-top: 10px; color: #74838F; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="main-title">SAITAMA</h1>
+        <a href="kanto.html" class="back-btn">← 戻る</a>
+    </div>
+
+    <div id="weather-container"></div>
+
+    <script>
+        function getIconByCode(code) {
+            const c = String(code);
+            if (c.startsWith('4')) return '雪.png';
+            if (c.startsWith('3')) return '雨.png';
+            if (c === '101' || c === '110' || c === '201') return '晴れand曇り.png';
+            if (c === '202') return '曇りand雨.png';
+            if (c.startsWith('1')) return '晴れ.png';
+            if (c.startsWith('2')) return '曇り.png';
+            return '曇り.png';
+        }
+
+        async function fetchRealWeather() {
+            try {
+                const url = "https://www.jma.go.jp/bosai/forecast/data/forecast/110000.json";
+                const response = await fetch(url);
+                const data = await response.json();
+                const container = document.getElementById('weather-container');
+
+                const shortWeathers = data[0].timeSeries[0].areas[0].weathers;
+                const weeklyCodes = data[1].timeSeries[0].areas[0].weatherCodes;
+                const weeklyMaxTemps = data[1].timeSeries[1].areas[0].tempsMax;
+                const weeklyMinTemps = data[1].timeSeries[1].areas[0].tempsMin;
+                const weeklyPops = data[1].timeSeries[0].areas[0].pops;
+                const dates = data[1].timeSeries[0].timeDefines;
+
+                dates.forEach((d, i) => {
+                    const dateObj = new Date(d);
+                    const displayDate = `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
+                    const icon = getIconByCode(weeklyCodes[i]);
+                    const weatherDesc = (i < shortWeathers.length) ? shortWeathers[i].replace(/　/g, ' ') : "予報";
+                    const maxT = weeklyMaxTemps[i] !== "" ? weeklyMaxTemps[i] : "--";
+                    const minT = weeklyMinTemps[i] !== "" ? weeklyMinTemps[i] : "--";
+                    const pop = weeklyPops[i] !== "" ? weeklyPops[i] : "0";
+
+                    const card = document.createElement('div');
+                    card.className = 'weather-card';
+                    card.innerHTML = `
+                        <div class="date">${displayDate}</div>
+                        <div class="weather-text">${weatherDesc}</div>
+                        <img src="${icon}" alt="天気">
+                        <div class="details">
+                            <span class="temp-max">${maxT}℃</span> / <span class="temp-min">${minT}℃</span>
+                        </div>
+                        <div class="precip">降水確率 ${pop}%</div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) { console.error(error); }
+        }
+        fetchRealWeather();
+    </script>
+</body>
+</html>
