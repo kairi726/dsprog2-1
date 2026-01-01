@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather News - Home</title>
+    <style>
+        /* 1. 全体の土台 */
+        body {
+            background-color: #a2c2d0;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', 'Inter', sans-serif;
+            color: #4A5B68;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 2. 左右に分けるコンテナ */
+        .main-container {
+            display: flex;
+            width: 90%;
+            max-width: 1100px;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        /* 3. 左側：タイトルとボタン */
+        .left-section {
+            flex: 1;
+        }
+
+        .main-title {
+            font-size: 70px;
+            font-weight: 900;
+            line-height: 0.9;
+            margin: 0 0 40px 0;
+            letter-spacing: -2px;
+        }
+
+        /* ボタンを2列に並べる（グリッド） */
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* 白いボタンのデザイン */
+        .region-btn {
+            background-color: white;
+            color: #4A5B68;
+            text-decoration: none;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px; /* 文字数が多いので少し小さめに調整 */
+            font-weight: bold;
+            transition: 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .region-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+            background-color: #f8f8f8;
+        }
+
+        /* 4. 右側：地図 */
+        .right-section {
+            flex: 1.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .japan-map {
+            width: 120%;
+            max-width: 550px;
+            height: auto;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.05));
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+            .main-title { font-size: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="left-section">
+            <h1 class="main-title">Weather<br>News</h1>
+            
+            <div class="button-grid">
+                <a href="tohoku.html" class="region-btn">北海道・東北</a>
+                <a href="kanto.html" class="region-btn">関東</a>
+                <a href="chubu.html" class="region-btn">中部</a>
+                <a href="kinki.html" class="region-btn">近畿</a>
+                <a href="chugoku-shikoku.html" class="region-btn">中国・四国</a>
+                <a href="kyushu-okinawa.html" class="region-btn">九州・沖縄</a>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <img src="map.png" alt="日本地図" class="japan-map">
+        </div>
+    </div>
+
+</body>
+</html>

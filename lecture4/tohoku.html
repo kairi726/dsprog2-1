@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather News - TOHOKU</title>
+    <style>
+        /* 1. 全体の土台 */
+        body {
+            background-color: #a2c2d0; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial Black', sans-serif; 
+            color: #4A5B68;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; 
+        }
+        
+        /* 2. 左右を分けるメイン枠 */
+        .main-container {
+            display: flex;
+            width: 90%;
+            max-width: 1100px;
+            gap: 20px; 
+            align-items: center; /* 左右の中央の高さを揃える */
+        }
+
+        /* 3. 左側：タイトルとボタン */
+        .left-section {
+            flex: 1;
+        }
+
+        .main-title {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1;
+            margin: 0 0 30px 0;
+            letter-spacing: 2px; 
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 15px; 
+        }
+
+        .region-btn {
+            background-color: white;
+            color: #4A5B68;
+            text-decoration: none; /* 青い下線を消す */
+            height: 75px;
+            border-radius: 15px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            transition: 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .region-btn:hover {
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1); 
+            background-color: #f8f8f8;
+        }
+
+        /* 4. 右側：地図エリア（ここが重要！） */
+        .right-section {
+            flex: 1; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    /* 中央に寄せる */
+            justify-content: center;
+        }
+
+        /* 北海道（上） */
+        .hokkaido-img {
+            width: 80%; /* 北海道の大きさ */
+            height: auto;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.05));
+            margin-bottom: -50px; 
+            z-index: 2;
+        }
+
+        /* 東北（下） */
+        .tohoku-img {
+            width: 55%; /* 東北の大きさ */
+            height: auto;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.05));
+            z-index: 1;
+        }
+        
+        /* スマホ対応 */
+        @media (max-width: 800px) {
+            .main-container {
+                flex-direction: column; 
+                padding: 40px 20px;
+            }
+            .main-title { font-size: 50px; text-align: center; }
+            .left-section { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="left-section">
+            <h1 class="main-title">TOHOKU</h1>
+            
+            <div class="button-grid">
+                <a href="hokkaido.html" class="region-btn">北海道</a>
+                <a href="aomori.html" class="region-btn">青森県</a>
+                <a href="iwate.html" class="region-btn">岩手県</a>
+                <a href="miyagi.html" class="region-btn">宮城県</a>
+                <a href="akita.html" class="region-btn">秋田県</a>
+                <a href="yamagata.html" class="region-btn">山形県</a>
+                <a href="fukushima.html" class="region-btn">福島県</a>
+                <div class="region-btn" style="visibility: hidden; pointer-events: none;"></div>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <img src="hokkaido.png" alt="北海道" class="hokkaido-img">
+            <img src="tohoku.png" alt="東北" class="tohoku-img">
+        </div>
+    </div>
+
+</body>
+</html>
